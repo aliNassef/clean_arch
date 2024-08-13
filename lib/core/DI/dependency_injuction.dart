@@ -18,7 +18,7 @@ setupGetIt() async {
       dio: Dio(),
     ),
   );
-
+  getIt.registerSingleton(CacheHelper());
   getIt.registerSingleton(
     NetworkInfoImpl(internetConnectionChecker: InternetConnectionChecker()),
   );
