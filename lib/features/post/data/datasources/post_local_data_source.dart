@@ -1,19 +1,19 @@
 import 'dart:convert';
 import '../../../../core/databases/cache/cache_helper.dart';
-import '../../../../core/errors/expentions.dart';
-import '../models/template_model.dart';
+ import '../../../../core/errors/exceptions.dart';
+import '../models/post_model.dart';
 
-class TemplateLocalDataSource {
+class PostLocalDataSource {
   final CacheHelper cache;
-  final String key = "CachedTemplate";
-  TemplateLocalDataSource({required this.cache});
+  final String key = "CachedPost";
+  PostLocalDataSource({required this.cache});
 
-  cacheTemplate(TemplateModel? templateToCache) {
-    if (templateToCache != null) {
+  cachePost(PostModel? postToCache) {
+    if (postToCache != null) {
       cache.saveData(
         key: key,
         value: json.encode(
-          templateToCache.toJson(),
+          postToCache.toJson(),
         ),
       );
     } else {
@@ -21,11 +21,11 @@ class TemplateLocalDataSource {
     }
   }
 
-  Future<TemplateModel> getLastTemplate() {
+  Future<PostModel> getLastPost() {
     final jsonString = cache.getDataString(key: key);
 
     if (jsonString != null) {
-      return Future.value(TemplateModel.fromJson(json.decode(jsonString)));
+      return Future.value(PostModel.fromJson(json.decode(jsonString)));
     } else {
       throw CacheExeption(errorMessage: "No Internet Connection");
     }
