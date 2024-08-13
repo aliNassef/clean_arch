@@ -1,4 +1,3 @@
- 
 import '../../../domain/enitites/sub_enitites/address_entity.dart';
 import 'geo_model.dart';
 
@@ -11,7 +10,7 @@ class AddressModel extends AddressEnitity {
     required super.geo,
   });
 
-  factory AddressModel.fromJson(Map<String, dynamic> json) {
+  factory AddressModel.fromJson(json) {
     return AddressModel(
       street: json['street'],
       suite: json['suite'],
@@ -29,5 +28,5 @@ class AddressModel extends AddressEnitity {
       'zipcode': zipcode,
       'geo': geo,
     };
-  } 
+  }
 }

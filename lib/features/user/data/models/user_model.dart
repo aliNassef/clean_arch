@@ -1,5 +1,6 @@
 import 'package:clean_arch/features/user/domain/enitites/user_entity.dart';
 
+import 'sub_models/address_model.dart';
 import 'sub_models/company_model.dart';
 
 class UserModel extends UserEntitiy {
@@ -18,12 +19,12 @@ class UserModel extends UserEntitiy {
     required this.company,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  factory UserModel.fromJson(json) {
     return UserModel(
       name: json['name'],
       email: json['email'],
       phone: json['phone'],
-      address: json['address'],
+      address: AddressModel.fromJson(json['address']),
       website: json['website'],
       username: json['username'],
       id: json['id'],
